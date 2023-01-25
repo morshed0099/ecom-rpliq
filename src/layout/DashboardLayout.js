@@ -17,16 +17,12 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                        <div className="dropdown dropdown-down">
-                            <label tabIndex={0} className=" m-1">Customer Detalis</label>
-                            <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><Link to='/dashboard/addcustomer'>Add Customer</Link></li>
-                                <li><Link to='/dashboard/allcustomers'>All Customers</Link></li>
-                            </ul>
-                        </div>
-
+                    <ul className="menu p-4 w-[200px] bg-base-100 text-base-content">
+                        <p className="btn text-center btn-ghost normal-case text-xl">Repliq Task</p>
+                        <li><Link to='/dashboard/addcustomer'>Add Customer</Link></li>
+                        <li><Link to='/dashboard/allcustomers'>All Customers</Link></li>
                         <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
+                        <li><Link to='/dashboard/allproducts'>Add Product</Link></li>
                     </ul>
 
                 </div>
