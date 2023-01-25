@@ -3,10 +3,20 @@ import Card from '../../Components/Card';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import { useQuery } from 'react-query';
+
 
 const Product = () => {
 
- 
+    const {data:products=[],refetch,isLoading}=useQuery({
+      queryKey:['products'],
+      queryFn:async()=>{
+        const res=await fetch('http://localhost:5000/product')
+        const data=await res.json()
+        return data
+      }      
+    })
+    console.log(products,'line 19');
     
         var settings = {
           dots: true,
@@ -44,14 +54,15 @@ const Product = () => {
         };
         return (
           <div className='p-8'>           
-            <Slider {...settings}>
-              
-             <div>
+            <Slider {...settings}>              
+            
               {
-                
-              }
-                <Card></Card>
-             </div>
+                products.map(product=><Card
+                  key={product._id}
+                  product={product}
+                ></Card>)
+              }               
+            
              
             </Slider>
           </div>

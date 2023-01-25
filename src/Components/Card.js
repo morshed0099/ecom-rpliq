@@ -5,7 +5,8 @@ import shirt from '../media/shirt.png'
 import Button from './Button';
 import { Link } from 'react-router-dom';
 
-const Card = () => {
+const Card = ({product}) => {
+    console.log(product);
     return (
         <div className='p-4 m-3 border border-light rounded-2xl shadow-2xl'>
             <div className='flex justify-between items-center mb-2'>

@@ -1,6 +1,18 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 
 const AllCustomers = () => {
+
+    const {data:customers=[],refetch,isLoading}=useQuery({
+        queryKey:['customers'],
+        queryFn:async()=>{
+            const res=await fetch('http://localhost:5000/customer')
+            const data=await res.json()
+            return data
+        }
+    })
+    console.log(customers);
+
     return (
         <div className='mx-8 max-w-[1000px]'>
             <div className="overflow-x-auto">
