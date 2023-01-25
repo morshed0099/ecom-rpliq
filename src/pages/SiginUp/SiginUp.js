@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +33,7 @@ const SiginUp = () => {
                 }).then(res => res.json()).then(data => {
 
                     if (data.acknowledged) {
-                        window.alert('user insert succefuly')
+                        toast.success('user insert succefuly')
                         form.reset()
                         navigate('/login')
 
@@ -44,6 +45,7 @@ const SiginUp = () => {
                 )
             }).catch((error) => {
                 console.error(error)
+                toast.error(error.message)
             })
 
     }

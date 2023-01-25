@@ -2,7 +2,7 @@ import React from 'react';
 
 const AllCustomers = () => {
     return (
-        <div>
+        <div className='mx-8 max-w-[1000px]'>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                 

@@ -11,7 +11,7 @@ const DashboardLayout = () => {
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
-                <div className="drawer-content flex-col ">
+                <div className="drawer-content flex-col  ">
                     <DashboardHeader></DashboardHeader>
                     <Outlet></Outlet>
                 </div>
@@ -22,7 +22,7 @@ const DashboardLayout = () => {
                         <li><Link to='/dashboard/addcustomer'>Add Customer</Link></li>
                         <li><Link to='/dashboard/allcustomers'>All Customers</Link></li>
                         <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
-                        <li><Link to='/dashboard/allproducts'>Add Product</Link></li>
+                        <li><Link to='/dashboard/allproducts'>All Product</Link></li>
                     </ul>
 
                 </div>

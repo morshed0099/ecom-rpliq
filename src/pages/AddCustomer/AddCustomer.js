@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import PhoneInput from 'react-phone-input-2';
 import { userAuth } from '../../Authprovider/Authprovider';
 
@@ -27,7 +28,7 @@ const AddCustomer = () => {
                 body:JSON.stringify(customer)
             }).then(res=>res.json()).then(data=>{
                 if(data.acknowledged){
-                    window.alert('customer created successfully')
+                   toast.success('customer created successfully')
                     form.reset()
                 }
             })

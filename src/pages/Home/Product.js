@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
 const Product = () => {
+
+ 
     
         var settings = {
           dots: true,
@@ -43,24 +45,14 @@ const Product = () => {
         return (
           <div className='p-8'>           
             <Slider {...settings}>
+              
              <div>
+              {
+                
+              }
                 <Card></Card>
              </div>
-             <div>
-                <Card></Card>
-             </div>
-             <div>
-                <Card></Card>
-             </div>
-             <div>
-                <Card></Card>
-             </div>
-             <div>
-                <Card></Card>
-             </div>
-             <div>
-                <Card></Card>
-             </div>
+             
             </Slider>
           </div>
         )
