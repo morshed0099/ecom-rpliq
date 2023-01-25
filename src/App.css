@@ -6,6 +6,15 @@
   height: 40vmin;
   pointer-events: none;
 }
+.slick-next:before{
+  color:black !important;
+}
+.slick-prev:before{
+  color:black !important;
+}
+.slick-next:before{
+  color:black !important;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
