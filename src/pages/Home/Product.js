@@ -16,7 +16,7 @@ const Product = () => {
         return data
       }      
     })
-    console.log(products,'line 19');
+   
     
         var settings = {
           dots: true,

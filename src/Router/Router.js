@@ -11,62 +11,66 @@ import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import ProductsAdd from "../pages/ProductsAdd/ProductsAdd";
 import SiginUp from "../pages/SiginUp/SiginUp";
 import ViewCart from "../pages/ViewCart/ViewCart";
+import AdminRoute from "./AdminRoute";
 
-export const router=createBrowserRouter([
-    {
-        path:'/',
-        element:<Main></Main>,
-        children:[
-            {
-                path:'/',
-                element:<Home></Home>
-            },
-            {
-                path:'/login',
-                element:<Login></Login>
-            },
-            {
-                path:'/signup',
-                element:<SiginUp></SiginUp>
-            },
-            {
-                path:'/viewcart',
-                element:<ViewCart></ViewCart>
-            },
-            {
-                path:'/productdetails',
-                element:<ProductDetails></ProductDetails>
-            }
-        ]
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Main></Main>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
       },
       {
-        path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
-        children:[
-            {
-                path:'/dashboard',
-                element:<Dashboard></Dashboard>,
-            
-              },
-              {
-                path:'/dashboard/addcustomer',
-                element:<AddCustomer></AddCustomer>
-              },
-              {
-                path:'/dashboard/allcustomers',
-                element:<AllCustomers></AllCustomers>
-              },
-              {
-                path:'/dashboard/addproduct',
-                element:<ProductsAdd></ProductsAdd>
-              },
-              {
-                path:'/dashboard/allproducts',
-                element:<AllProducts></AllProducts>
-              }
-        ]
+        path: '/login',
+        element: <Login></Login>
       },
-      
-      
+      {
+        path: '/signup',
+        element: <SiginUp></SiginUp>
+      },
+      {
+        path: '/viewcart',
+        element: <ViewCart></ViewCart>
+      },
+      {
+        path: '/productdetails/:id',
+        loader:async({ params }) => {
+          return fetch(`http://localhost:5000/productdetails/${params.id}`)
+        },
+        element: <ProductDetails></ProductDetails>
+      }
+    ]
+  },
+  {
+    path: '/dashboard',
+    element: <AdminRoute><DashboardLayout></DashboardLayout></AdminRoute>,
+    children: [
+      {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+
+      },
+      {
+        path: '/dashboard/addcustomer',
+        element: <AddCustomer></AddCustomer>
+      },
+      {
+        path: '/dashboard/allcustomers',
+        element: <AllCustomers></AllCustomers>
+      },
+      {
+        path: '/dashboard/addproduct',
+        element: <ProductsAdd></ProductsAdd>
+      },
+      {
+        path: '/dashboard/allproducts',
+        element: <AllProducts></AllProducts>
+      }
+    ]
+  },
+
+
 
 ])

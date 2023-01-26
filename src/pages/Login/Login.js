@@ -4,8 +4,7 @@ import PhoneInput from 'react-phone-input-2'
 import { userAuth } from '../../Authprovider/Authprovider';
 
 const Login = () => {
-    const{user,setUser,loginUserWithEmail}=useContext(userAuth)
-     console.log(user ,'line7');
+    const{setUser,loginUserWithEmail}=useContext(userAuth)    
     const hadelLogin=(e)=>{
        e.preventDefault()
        const form =e.target
@@ -15,7 +14,8 @@ const Login = () => {
        loginUserWithEmail(email,password)
        .then((result)=>{
         const user=result.user
-        setUser(user)
+        console.log(user ,'lie');
+        setUser(user);
         toast.success('login successfuly')
         console.log(user);
        }).catch((error)=>{

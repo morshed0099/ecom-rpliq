@@ -17,11 +17,12 @@ const SiginUp = () => {
         const password = form.password.value;
         console.log(userName, email, phoneNumber, password)
 
-        const user = {
+        const createUser = {
             userName,
             email,
             phoneNumber,
-            password
+            password,
+            userRoll:"customer"
         }
         createUserWithEmailPss(email, password)
             .then((result) => {
@@ -29,7 +30,7 @@ const SiginUp = () => {
                 fetch('http://localhost:5000/users', {
                     method: "POST",
                     headers: { "content-type": "application/json" },
-                    body: JSON.stringify(user)
+                    body: JSON.stringify(createUser)
                 }).then(res => res.json()).then(data => {
 
                     if (data.acknowledged) {
@@ -79,7 +80,7 @@ const SiginUp = () => {
                         required: true,
                         autoFocus: true,
                         placeholder: '1991394353',
-
+                       
                     }}
                 />
                 <div className='mb-2'>

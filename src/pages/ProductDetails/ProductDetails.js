@@ -3,10 +3,13 @@ import shirt from '../../media/shirt.png'
 import model from '../../media/mdoel.png'
 import moled1 from '../../media/family (1).png'
 import { StarIcon } from '@heroicons/react/24/solid';
+import { useLoaderData } from 'react-router-dom';
 
 const ProductDetails = () => {
     const [img, setImg] = useState(shirt)
-
+    const product=useLoaderData()
+    const { _id, productName, price, oldPrice,
+        description, imgaeOne, imageTwo, imageThird } = product;
     const hadelImages = e => {
         console.log(e.target.src)
         setImg(e.target.src)
@@ -17,17 +20,17 @@ const ProductDetails = () => {
                 <img className='w-[400px] h-[400px]' src={img} alt="" />
                 <div onClick={hadelImages} className='flex mt-3 gap-3'>
                     <img
-                        className='w-[100px] h-[100px] border border-light rounded-2xl' src={model} alt="" />
+                        className='w-[100px] h-[100px] border border-light rounded-2xl' src={imgaeOne} alt="" />
                     <img
-                        className='w-[100px] h-[100px] border border-light rounded-2xl' src={moled1} alt="" />
+                        className='w-[100px] h-[100px] border border-light rounded-2xl' src={imageTwo} alt="" />
                     <img
-                        className='w-[100px] h-[100px] border border-light rounded-2xl' src={shirt} alt="" />
+                        className='w-[100px] h-[100px] border border-light rounded-2xl' src={imageThird} alt="" />
                 </div>
             </div>
 
             <div>
                 <div>
-                    <p className='text-2xl p-3 font-bold  text-pink-500'>Men Sirt</p>
+                    <p className='text-2xl p-3 font-bold  text-pink-500'>{productName}</p>
                 </div>
                 <div className='flex md:mt-4'>
                     <span> <StarIcon className='h-6 w-6 text-yellow-600'/> </span>
@@ -36,7 +39,7 @@ const ProductDetails = () => {
                     <span> <StarIcon className='h-6 w-6 text-yellow-600'/> </span>
                 </div>
                <div className='md:mt-4 mt-2'>
-                 <p className='text-3xl font-xl'>Pirce : $450</p>
+                 <p className='text-3xl font-xl'>Pirce : ${price}</p>
                </div>
                 <div>
                     <div className='md:mt-3 mt-2'>
@@ -45,7 +48,7 @@ const ProductDetails = () => {
                     <input type="number" className='input input-bordered' />
                 </div>
                 <div className='text-center md:mt-3 mt-2'>
-                    <p><strong>Description</strong>:<span className='text-gray-600'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolores est, vel facilis fuga nostrum mollitia aliquam? Veniam, accusamus quo!</span></p>
+                    <p><strong>Description</strong>:<span className='text-gray-600'>{description}</span></p>
                 </div>
                 <div className='md:mt-3 mt-2'>
                     <button className='btn bg-pink-600 hover:bg-pink-800 border-none '>Buy Now</button>
