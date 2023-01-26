@@ -1,22 +1,36 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, NavLink } from 'react-router-dom';
 import { userAuth } from '../Authprovider/Authprovider';
 
 const DashboardHeader = () => {
-    const { user, setUser } = useContext(userAuth)
+    const { user, setUser,logOut} = useContext(userAuth)
+
+    const handelLogout = (e) => {
+        e.preventDefault()
+        logOut()
+            .then((result) => {               
+                toast.success('logout successfully')
+
+            })
+            .then((error) => {
+                console.error(error);
+                toast.error(error.message);
+            })
+    }
     const menuItems =
         <>
-            <Link className='mr-3' to='/'>home</Link>
-            <Link to='/dashboard'>Dashboard</Link>
+            <NavLink style={{marginTop:"10px",marginRight:"5px", fontWeight:"bold"}} className={`isactive ? "active":""`} to='/'>Home</NavLink>
+           
             {
                 user?.email ?
                     <>
-                    <button className='btn border-none bg-pink-600 hover:bg-pink-800'>LogOut</button>
+                    <button onClick={handelLogout} className='btn btn-sm border-none mt-2 ml-3 bg-pink-600 hover:bg-pink-800'>LogOut</button>
                     </>
                     :
                     <>
-                        <Link className='mr-3' to='/login'>Login</Link>
-                        <Link className='mr-3' to='/signup'>SignUp</Link>
+                        <NavLink style={{marginTop:"10px",marginRight:"10px", fontWeight:"bold"}} className='mr-3' to='/login'>Login</NavLink >
+                        <NavLink style={{marginTop:"10px",marginRight:"10px", fontWeight:"bold"}}  className='mr-3' to='/signup'>SignUp</NavLink >
                     </>
             }
         </>

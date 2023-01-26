@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import AllOrderTable from './AllOrderTable';
 
 const AllOrder = () => {
     const {data:products=[],refetch,isLoading}=useQuery({
@@ -9,7 +10,9 @@ const AllOrder = () => {
             const data=await res.json()
             return data
         }
+       
     })
+    console.log(products);
     return (
         <div className='mx-8 max-w-[1000px]'>
             <div className="overflow-x-auto">
@@ -17,22 +20,21 @@ const AllOrder = () => {
 
                     <thead>
                         <tr>
-
-                            <th>Image</th>
                             <th>Product Name</th>
+                            <th>Customer Email</th>
+                            <th>Quantity</th>
                             <th>Price</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
 
                         {
-                            // products.map(product => <AllproductTable
-                            //     key={product._id}
-                            //     product={product}
-                            // ></AllproductTable>
-                            // )
+                            products.map(product => <AllOrderTable
+                                key={product._id}
+                                product={product}
+                            ></AllOrderTable>
+                            )
                         }
 
 

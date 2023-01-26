@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userAuth } from '../../Authprovider/Authprovider';
 
 const SiginUp = () => {
+    const [loader, setLoader] = useState(false)
     const { createUserWithEmailPss } = useContext(userAuth)
     const navigate = useNavigate()
     const handelSingup = (e) => {
+        setLoader(true)
         e.preventDefault()
         const form = e.target
         const userName = form.userName.value;
@@ -22,7 +24,7 @@ const SiginUp = () => {
             email,
             phoneNumber,
             password,
-            userRoll:"customer"
+            userRoll: "customer"
         }
         createUserWithEmailPss(email, password)
             .then((result) => {
@@ -36,16 +38,19 @@ const SiginUp = () => {
                     if (data.acknowledged) {
                         toast.success('user insert succefuly')
                         form.reset()
+                        setLoader(false)
                         navigate('/login')
 
                     } else {
                         alert(data.message)
+
                     }
                 }
 
                 )
             }).catch((error) => {
                 console.error(error)
+                setLoader(false)
                 toast.error(error.message)
             })
 
@@ -80,7 +85,7 @@ const SiginUp = () => {
                         required: true,
                         autoFocus: true,
                         placeholder: '1991394353',
-                       
+
                     }}
                 />
                 <div className='mb-2'>
@@ -89,9 +94,14 @@ const SiginUp = () => {
                 <div className='mb-2'>
                     <input name="password" type="password" className='input input-bordered w-full' />
                 </div>
+                <div>
+                    <p>You have an Alredy Accaunt ? <Link to='/login'><span className='font-bold text-green-800'>Login</span></Link></p>
+                </div>
                 <div className='mb-2'>
                     <button className='btn bg-pink-600 hover:bg-pink-800 border-none w-full'>
-                        Sing up
+                        {
+                            loader ? "please wait" : "SignUp"
+                        }
                     </button>
                 </div>
             </form>

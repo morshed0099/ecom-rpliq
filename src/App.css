@@ -6,6 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+.active{
+  color:rgb(139, 8, 30)
+}
 .slick-next:before{
   color:black !important;
 }

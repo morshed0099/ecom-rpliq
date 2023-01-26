@@ -3,7 +3,7 @@ import img from '../media/na_60f0302690d18.jpg'
 
 const Footer = () => {
     return (
-        <div className="className='w-full text-white bg-no-repeat bg-cover" style={{backgroundImage:`url(${img})`}}>
+        <div className="className='w-full max-w-[1200px] max-auto text-white bg-no-repeat bg-cover" style={{backgroundImage:`url(${img})`}}>
             <footer className="footer p-10 text-white">
                 <div>
                     <span className="footer-title">Services</span>
@@ -29,7 +29,7 @@ const Footer = () => {
                     <span className="footer-title">Newsletter</span>
                     <div className="form-control w-80">
                         <label className="label">
-                            <span className="label-text">Enter your email address</span>
+                            <span className="label-text text-white">Enter your email address</span>
                         </label>
                         <div className="relative">
                             <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
