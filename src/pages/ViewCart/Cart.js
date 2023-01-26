@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import {  TrashIcon } from '@heroicons/react/24/solid'
+import React, { useContext, useState } from 'react';
+import { TrashIcon } from '@heroicons/react/24/solid'
+import { userAuth } from '../../Authprovider/Authprovider';
+import { toast } from 'react-hot-toast';
+
 
 const Cart = ({ crt }) => {
-    const { _id, imageThird, productName, price } = crt
-
+    const { _id, imageThird, productName, price,paid} = crt
+    const { user } = useContext(userAuth)
     const [prices, setPrice] = useState(price)
     const [totalPrice, setTotalPrice] = useState(price)
     const [quantity, setQuantity] = useState(1)
@@ -20,6 +23,43 @@ const Cart = ({ crt }) => {
         setQuantity(quantity + 1)
         setPrice((quantity + 1) * price)
     }
+    const handelbuy=(user,product,prices,quantity)=>{
+        const buy={
+            buyId:product._id,
+            customerEmail:user.email,
+            prices,
+            productName:product.productName,
+            quantity,
+            customerPhone:user?.phoneNumber
+        }
+        console.log(buy)
+       fetch('http://localhost:5000/paid',{
+        method:"POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(buy)
+    }).then(res => res.json()).then(data => {
+        if (data.deletedCount>0) {
+            toast.success('delete successfully')
+        }
+    })
+    }
+    const hadelCartDelete = (user, id) => {
+        console.log(user?.email, id);
+        const fidner = { customerEmail: user?.email }
+        const yes = window.confirm('are your sure datele ?')
+        if (yes) {
+            fetch(`http://localhost:5000/cart/${id}`, {
+                method: "DELETE",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(fidner)
+            }).then(res => res.json()).then(data => {
+                if (data.deletedCount>0) {
+                    toast.success('delete successfully')
+                }
+            })
+        }
+    }
+
     return (
         <div className='flex justify-between items-center gap-2 mb-4 border  border-light rounded-2xl p-3'>
             <div>
@@ -41,10 +81,10 @@ const Cart = ({ crt }) => {
             </div>
             <div>
                 <div>
-                    <button className='btn mr-[20px] mb-3 btn-success btn-sm'>PAY</button>
+                    <button onClick={()=>handelbuy(user,crt,prices,quantity)} className='btn mr-[20px] mb-3 btn-success btn-sm'>{paid?"paid":"pay"}</button>
                 </div>
                 <div>
-                    <button onClick={hadelCartDelete}><TrashIcon className="h-6 w-6 ml-4 text-red-500"/> </button>
+                    <button onClick={() => hadelCartDelete(user, _id)}><TrashIcon className="h-6 w-6 ml-4 text-red-500" /> </button>
                 </div>
             </div>
         </div>
