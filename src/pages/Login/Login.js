@@ -33,6 +33,8 @@ const Login = () => {
         <div className='w-96 mx-auto my-6 border p-4 border-light rounded-2xl'>
             <form onSubmit={hadelLogin}>
                 <div className='text-3xl font-bold text-center p-4'><h1>Login Form</h1></div>
+                <p>ADMIN USER: admin@hotmail.com</p>
+                <p>PASS: 123456</p>
                 <div className='mb-2'>
                     <lebel>Email</lebel>
                 </div>

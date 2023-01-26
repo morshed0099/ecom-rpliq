@@ -9,7 +9,7 @@ const useAdmin = (email) => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/admin/user/${email}`)
+            fetch(`https://ecom-repliq-server-morshed0099.vercel.app/admin/user/${email}`)
                 .then(res=>res.json())
                 .then(data=>{
                     setIsAdmin(data.isAdmin)

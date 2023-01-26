@@ -8,7 +8,7 @@ const AllCustomers = () => {
     const {data:customers=[],refetch,isLoading}=useQuery({
         queryKey:['customers'],
         queryFn:async()=>{
-            const res=await fetch('http://localhost:5000/customer')
+            const res=await fetch('https://ecom-repliq-server-morshed0099.vercel.app/customer')
             const data=await res.json()
             return data
         }

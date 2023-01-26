@@ -33,7 +33,7 @@ const Cart = ({ crt }) => {
             customerPhone:user?.phoneNumber
         }
         console.log(buy)
-       fetch('http://localhost:5000/paid',{
+       fetch('https://ecom-repliq-server-morshed0099.vercel.app/paid',{
         method:"POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(buy)
@@ -48,7 +48,7 @@ const Cart = ({ crt }) => {
         const fidner = { customerEmail: user?.email }
         const yes = window.confirm('are your sure datele ?')
         if (yes) {
-            fetch(`http://localhost:5000/cart/${id}`, {
+            fetch(`https://ecom-repliq-server-morshed0099.vercel.app/cart/${id}`, {
                 method: "DELETE",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(fidner)

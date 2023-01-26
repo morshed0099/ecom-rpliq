@@ -6,7 +6,7 @@ const AllOrder = () => {
     const {data:products=[],refetch,isLoading}=useQuery({
         queryKey:['products'],
         queryFn:async()=>{
-            const res=await fetch('http://localhost:5000/addedProduct')
+            const res=await fetch('https://ecom-repliq-server-morshed0099.vercel.app/addedProduct')
             const data=await res.json()
             return data
         }

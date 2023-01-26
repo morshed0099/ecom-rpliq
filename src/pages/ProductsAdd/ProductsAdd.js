@@ -85,7 +85,7 @@ const ProductsAdd = () => {
             description
         }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://ecom-repliq-server-morshed0099.vercel.app/products', {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(product)

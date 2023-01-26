@@ -27,7 +27,7 @@ const Card = ({ product }) => {
 
 
             }          
-           fetch('http://localhost:5000/cart',{
+           fetch('https://ecom-repliq-server-morshed0099.vercel.app/cart',{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify(cartProduct)
