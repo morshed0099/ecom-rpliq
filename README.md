@@ -1,3 +1,16 @@
+
+
+firebae user for login system
+mongodb use for databse
+hero icon user for icon
+tailwind css and daisy ui used for ui
+react query user for fetch
+slick silder user for slider
+admin passwod:123456
+admin email: admin@hotmil.com
+live site link : https://jade-cobbler-17f68a.netlify.app/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
